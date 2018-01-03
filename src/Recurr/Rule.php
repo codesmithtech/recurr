@@ -657,7 +657,7 @@ class Rule
             throw new InvalidArgument('Frequency integer must be between 0 and 6 Use the class constants.');
         }
 
-        $this->freq = $freq;
+        $this->freq = (int)$freq;
 
         return $this;
     }
@@ -679,7 +679,7 @@ class Rule
      */
     public function getFreqAsText()
     {
-        return array_search($this->getFreq(), self::$freqs);
+        return array_search($this->getFreq(), self::$freqs, true);
     }
 
     /**
@@ -1068,7 +1068,7 @@ class Rule
         $val = $this->getByMonth();
 
         return ! empty($val);
-    }
+    }$rule->getString()
 
     /**
      * This rule specifies the day on which the workweek starts.
