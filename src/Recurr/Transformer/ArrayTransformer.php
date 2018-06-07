@@ -563,7 +563,7 @@ class ArrayTransformer
                             continue;
                         }
 
-                        if ($constraint instanceof ConstraintInterface && !$constraint->test($dtTmp)) {
+                        if ($constraint instanceof ConstraintInterface && !$constraint->test($dtTmp, $durationInterval)) {
                             if (!$countConstraintFailures) {
                                 if ($constraint->stopsTransformer()) {
                                     $continue = false;
