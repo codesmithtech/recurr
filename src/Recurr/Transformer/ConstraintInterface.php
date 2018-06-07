@@ -15,11 +15,12 @@ interface ConstraintInterface
      * @return bool
      */
     public function stopsTransformer();
-
+    
     /**
      * @param \DateTimeInterface $date
      *
+     * @param \DateInterval|null $duration
      * @return bool
      */
-    public function test(\DateTimeInterface $date);
+    public function test(\DateTimeInterface $date, \DateInterval $duration = null);
 }

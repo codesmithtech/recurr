@@ -37,7 +37,7 @@ class AfterConstraint extends Constraint
      *
      * {@inheritdoc}
      */
-    public function test(\DateTimeInterface $date)
+    public function test(\DateTimeInterface $date, \DateInterval $duration = null)
     {
         if ($this->inc) {
             return $date >= $this->after;

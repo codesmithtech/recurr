@@ -38,20 +38,19 @@ class BetweenConstraint extends Constraint
     }
 
     /**
-     * Passes if $date is between $after and $before
+     * Passes if $date begins or ends between $this->after or $this->before
      *
      * {@inheritdoc}
      */
-    public function test(\DateTimeInterface $date)
+    public function test(\DateTimeInterface $date, \DateInterval $duration = null)
     {
-        if ($date > $this->before) {
-            $this->stopsTransformer = true;
+        if ($duration) {
+            $eventEnd = $date->add($duration);
+            
+            return
+            ($this->before <= $date && $date <= $this->after)
+             ||
+            ($this->before <= $eventEnd && $eventEnd <= $this->after);
         }
-
-        if ($this->inc) {
-            return $date >= $this->after && $date <= $this->before;
-        }
-
-        return $date > $this->after && $date < $this->before;
     }
 }
