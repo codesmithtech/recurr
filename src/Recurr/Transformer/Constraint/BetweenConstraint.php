@@ -45,7 +45,8 @@ class BetweenConstraint extends Constraint
     public function test(\DateTimeInterface $date, \DateInterval $duration = null)
     {
         if ($duration) {
-            $eventEnd = $date->add($duration);
+            $eventEnd = clone $date;
+            $eventEnd->add($duration);
             
             return
             ($this->before <= $date && $date <= $this->after)
